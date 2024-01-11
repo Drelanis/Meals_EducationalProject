@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, TextStyle, ViewStyle } from "react-native";
 
 type Props = {
-  duration: string;
+  duration: number;
   complexity: string;
   affordability: string;
   style?: ViewStyle;
