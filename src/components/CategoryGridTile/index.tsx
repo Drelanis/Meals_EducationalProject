@@ -10,14 +10,14 @@ import {
 
 type Props = {
   title: string;
-  backgroundColor: ColorValue;
+  color: ColorValue;
   onPress: (event: GestureResponderEvent) => void;
 };
 
 export const CategoryGridTile = (props: Props) => {
-  const { title, backgroundColor, onPress } = props;
+  const { title, color, onPress } = props;
 
-  const styles = useStyles(backgroundColor);
+  const styles = useStyles(color);
 
   return (
     <View style={styles.gridItem}>
@@ -37,7 +37,7 @@ export const CategoryGridTile = (props: Props) => {
   );
 };
 
-const useStyles = (backgroundColor: ColorValue) => {
+const useStyles = (color: ColorValue) => {
   const styles = StyleSheet.create({
     gridItem: {
       flex: 1,
@@ -64,7 +64,7 @@ const useStyles = (backgroundColor: ColorValue) => {
       borderRadius: 8,
       justifyContent: "center",
       alignItems: "center",
-      backgroundColor,
+      backgroundColor: color,
     },
     title: {
       fontWeight: "bold",
