@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { MealDetails } from "@components/MealDetails";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 type Props = {
   id: string;
@@ -18,23 +19,28 @@ type Props = {
   affordability: string;
 };
 
+type MealDetailParamList = {
+  MealDetail: { mealId: string } | undefined;
+};
+
 const MealItem = (props: Props) => {
   const { id, title, imageUrl, duration, complexity, affordability } = props;
 
-  // const navigation = useNavigation();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<MealDetailParamList>>();
 
-  // const selectMealItemHandler = () => {
-  //   navigation.navigate("MealDetail", {
-  //     mealId: id,
-  //   });
-  // }
+  const selectMealItemHandler = () => {
+    navigation.navigate("MealDetail", {
+      mealId: id,
+    });
+  };
 
   return (
     <View style={styles.mealItem}>
       <Pressable
         android_ripple={{ color: "#ccc" }}
         style={({ pressed }) => (pressed ? styles.buttonPressed : null)}
-        // onPress={selectMealItemHandler}
+        onPress={selectMealItemHandler}
       >
         <View style={styles.innerContainer}>
           <View>
